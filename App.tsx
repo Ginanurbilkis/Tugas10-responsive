@@ -1,117 +1,168 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+    <ScrollView style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Wallpaper Gallery</Text>
+      </View>
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+      {/* Hero Section */}
+      <View style={styles.heroSection}>
+        <Image
+          source={{ uri: 'https://wallpaperswide.com/download/sunset_312-wallpaper-2560x1080.jpg' }}
+          style={styles.heroImage}
+          resizeMode="cover"
+        />
+        <Text style={styles.heroText}>Discover Beautiful Wallpapers</Text>
+      </View>
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+      {/* Content Section */}
+      <View style={styles.contentSection}>
+        <Text style={styles.sectionTitle}>Features</Text>
+        <View style={styles.featureGrid}>
+          {/* Feature 1 */}
+          <TouchableOpacity style={styles.featureCard}>
+            <Image
+              source={{ uri: 'https://via.placeholder.com/100x100/ff7f7f/333333' }}
+              style={styles.featureImage}
+            />
+            <Text style={styles.featureTitle}>Nature</Text>
+            <Text style={styles.featureDescription}>
+              Explore stunning nature wallpapers.
+            </Text>
+          </TouchableOpacity>
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+          {/* Feature 2 */}
+          <TouchableOpacity style={styles.featureCard}>
+            <Image
+              source={{ uri: 'https://via.placeholder.com/100x100/7f7fff/333333' }}
+              style={styles.featureImage}
+            />
+            <Text style={styles.featureTitle}>Abstract</Text>
+            <Text style={styles.featureDescription}>
+              Unique abstract designs for your phone.
+            </Text>
+          </TouchableOpacity>
+
+          {/* Feature 3 */}
+          <TouchableOpacity style={styles.featureCard}>
+            <Image
+              source={{ uri: 'https://via.placeholder.com/100x100/7fff7f/333333' }}
+              style={styles.featureImage}
+            />
+            <Text style={styles.featureTitle}>Technology</Text>
+            <Text style={styles.featureDescription}>
+              Modern tech-inspired wallpapers.
+            </Text>
+          </TouchableOpacity>
+
+          {/* Feature 4 */}
+          <TouchableOpacity style={styles.featureCard}>
+            <Image
+              source={{ uri: 'https://via.placeholder.com/100x100/ff7fff/333333' }}
+              style={styles.featureImage}
+            />
+            <Text style={styles.featureTitle}>Space</Text>
+            <Text style={styles.featureDescription}>
+              Dive into breathtaking space visuals.
+            </Text>
+          </TouchableOpacity>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+      </View>
+
+      {/* Footer */}
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>© 2024 Wallpaper Gallery</Text>
+      </View>
+    </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+  },
+  header: {
+    backgroundColor: '#222',
+    padding: 20,
+    alignItems: 'center',
+  },
+  headerTitle: {
+    color: '#fff',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  heroSection: {
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  heroImage: {
+    width: '90%',
+    height: 200,
+    borderRadius: 10,
+  },
+  heroText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 10,
+    color: '#333',
+  },
+  contentSection: {
+    paddingHorizontal: 20,
   },
   sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    textAlign: 'center',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  featureGrid: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
   },
-  highlight: {
-    fontWeight: '700',
+  featureCard: {
+    backgroundColor: '#fff',
+    width: '45%',
+    marginBottom: 15,
+    padding: 15,
+    alignItems: 'center',
+    borderRadius: 10,
+    elevation: 3, // Shadow for Android
+    shadowColor: '#000', // Shadow for iOS
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 2 },
+  },
+  featureImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  featureTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 5,
+  },
+  featureDescription: {
+    fontSize: 14,
+    color: '#666',
+    textAlign: 'center',
+  },
+  footer: {
+    backgroundColor: '#222',
+    padding: 10,
+    alignItems: 'center',
+  },
+  footerText: {
+    color: '#fff',
+    fontSize: 14,
   },
 });
 
